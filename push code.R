@@ -1,7 +1,7 @@
 #command to push new code
-#1 git add  .
-#2 git commit -m "commit message"
-#3 git push origin brachname
+git add  .
+git commit -m "created a file for rejection sampling "
+git push origin master
 
 #git branch checks the branch your in
 
