@@ -8,9 +8,6 @@
 
 
 loop_again <- function(pdf,a,b,C, percent){
-  print("test 2 -------")
-  print(1/percent)
-  print("end 2  -------")
   sim_data <- replicate(1000/percent, {
     u <- runif(1, a, b)
     v <- runif(1, 0, C)
@@ -42,9 +39,6 @@ rejection_samplr <- function(n, pdf, a , b, C) {
         }
       else if (length(sim_data < n)) {
         percent <- length(sim_data)/10000
-        print("test 1 -------")
-        print(percent)
-        print("end -------")
         sim_data2 <- loop_again(pdf,a,b, C, percent) #loops over the sim_dat function 1/percent times
         sim_data <- c(sim_data,sim_data2[!is.na(sim_data2)])
         #sim_data <- sim_data[!is.na(sim_data)]
@@ -61,6 +55,5 @@ sim_data <- rejection_samplr(30000, my_pdf, 0,2,1)
 head(sim_data)
 length(sim_data)
 
-# changes for creating new git directory
 
 
