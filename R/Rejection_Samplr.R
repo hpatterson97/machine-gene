@@ -61,6 +61,6 @@ sim_data <- rejection_samplr(30000, my_pdf, 0,2,1)
 head(sim_data)
 length(sim_data)
 
-
+# changes for creating new git directory
 
 
