@@ -11,6 +11,8 @@
 #'my_pdf <- function(x) {
 #'  ifelse(x>=0 & x<=2, (x/2), 0)}
 #'  sim_data <- rejection_samplr(30000, my_pdf, 0,2,1)
+#'  hist(sim_data, probability = TRUE)
+#'  curve(my_pdf(x), col = "red", add = TRUE)
 #'  ## sampling from dunif
 #'  sim_data <- rejection_samplr(1300, dunif, 0,1,2)
 #'  hist(sim_data, probability = TRUE)
@@ -54,6 +56,5 @@ loop_again <- function(pdf,a,b,C, percent){
   })
   sim_data
 }
-
 
 
