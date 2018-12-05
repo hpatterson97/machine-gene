@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_function.R
 \name{add}
 \alias{add}
-\title{Add together two numbers}
+\title{sample from a CDF}
 \usage{
 add(x, y)
 }
@@ -15,9 +15,5 @@ add(x, y)
 The sum of \code{x} and \code{y}
 }
 \description{
-Add together two numbers
-}
-\examples{
-add(1, 1)
-add(10, 1)
+sample from a CDF
 }
