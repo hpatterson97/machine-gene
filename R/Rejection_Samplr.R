@@ -1,25 +1,21 @@
 #' Add together two numbers
-#' @description This is code that performs rejection sampling
-#' @param x A number
-#' @param y A number
-#' @return The sum of \code{x} and \code{y}
-#' @examples n/a
+#' @description This is code that performs rejection sampling on a continuous random variable
+#' @param n the number of samples
+#' @param pdf a function that is the pdf of the random variable that you wish to sample from
+#' @param a a numeric that is the lower bound of the random variable you wish to sample from
+#' @param b a numeric that is the upper bound of the random variable you wish to sample from, so P(a ≤ X ≤ b) = 1
+#' @param C a numeric that is such that f(x) ≤ C for all values of x
+#' @return a random sample of size n from the rv with pdf provided
+#' @examples
+#' ## sampling from custom pdf
+#'my_pdf <- function(x) {
+#'  ifelse(x>=0 & x<=2, (x/2), 0)}
+#'  sim_data <- rejection_samplr(30000, my_pdf, 0,2,1)
+#'  ## sampling from dunif
+#'  sim_data <- rejection_samplr(1300, dunif, 0,1,2)
+#'  hist(sim_data, probability = TRUE)
+#'  curve(dunif(x,0,1), col = "red", add = TRUE)
 #' @export
-
-
-loop_again <- function(pdf,a,b,C, percent){
-  sim_data <- replicate(1000/percent, {
-    u <- runif(1, a, b)
-    v <- runif(1, 0, C)
-    if(v < pdf(u)) {#then accept else reject
-      u
-    } else {
-      NA
-    }
-  })
-  sim_data
-}
-
 rejection_samplr <- function(n, pdf, a , b, C) {
     sim_data <- replicate(10000, {
       v <- runif(1,a,b)
@@ -31,7 +27,6 @@ rejection_samplr <- function(n, pdf, a , b, C) {
         }
       })
     sim_data <- sim_data[!is.na(sim_data)]
-    print(n)
     for (i in 1:100){
       if (length(sim_data) >= n) {
         sim_data <- sim_data[1:n]
@@ -47,13 +42,18 @@ rejection_samplr <- function(n, pdf, a , b, C) {
     sim_data
 }
 
-my_pdf <- function(x) {
-  ifelse(x>=0 & x<=2, (x/2), 0)
+loop_again <- function(pdf,a,b,C, percent){
+  sim_data <- replicate(1000/percent, {
+    u <- runif(1, a, b)
+    v <- runif(1, 0, C)
+    if(v < pdf(u)) {#then accept else reject
+      u
+    } else {
+      NA
+    }
+  })
+  sim_data
 }
-#testing function
-sim_data <- rejection_samplr(30000, my_pdf, 0,2,1)
-head(sim_data)
-length(sim_data)
 
 
 
