@@ -8,14 +8,14 @@ git push origin workingbranch
 #note - change comit message each time
 #check it got pushed on to git hub
 
-# after you code has been updated in gihub
+# after you code has been updated in gihub- this pulls it back into R
 git checkout master
 git pull --rebase origin master
 git checkout workingbranch
 git rebase master
 
 
-terminal commands
+#terminal commands
 ls list files
 cd
 
