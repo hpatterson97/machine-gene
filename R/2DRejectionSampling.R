@@ -6,10 +6,16 @@
 #' @param C a numeric that is such that f(x) ≤ C for all values of x and y
 #' @return a random sample of coordinate pairs
 samplr2D <- function(n, jpdf, a , b, C) {
-  v <- runif(2,a,b)
-  u <- runif(1,0,C)
-  sim_data2D <- jpdf(v) < u
+  sim_data2D <- replicate(10000,{
+    v <- runif(2,a,b)
+    u <- runif(1,0,C)
+    if(u < jpdf(v)){
+      sample <- data.frame( x = v[1],
+                            y = v[2])
+     } else {
+       NA
+    }
+})
 }
 
-v <- runif(2,0,1)
-v[1]
+samplr2d()

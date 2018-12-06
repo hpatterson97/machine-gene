@@ -74,4 +74,3 @@ loop_again <- function(pdf,a,b,C, percent){
 
 
 
-
