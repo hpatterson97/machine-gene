@@ -7,15 +7,22 @@
 #' @return a random sample of size n from the rv with pdf provided
 #' @examples
 #' ## sampling from custom pdf
-#'my_pdf <- function(x) {
-#'  ifelse(x>=0 & x<=2, (x/2), 0)}
+#'  my_pdf <- function(x) {
+#'    ifelse(x>=0 & x<=2, (x/2), 0)}
 #'  sim_data <- rejection_samplr(30000, my_pdf, 0,2,1)
 #'  hist(sim_data, probability = TRUE)
 #'  curve(my_pdf(x), col = "red", add = TRUE)
-#'  ## sampling from dunif
+#' ## sampling from dunif
 #'  sim_data <- rejection_samplr(1300, dunif, 0,1,2)
 #'  hist(sim_data, probability = TRUE)
 #'  curve(dunif(x,0,1), col = "red", add = TRUE)
+#' ## sampling from beta
+#'  sim_data <- rejection_samplr(1300, pdf_beta, a = 0,b = 1,C =1.5)
+#'  pdf_beta <- function(x) {
+#'    dbeta(x, 2, 3)
+#'  }
+#'  hist(sim_data, probability = TRUE)
+#'  curve(dbeta(x,2,3), col = "red", add = TRUE)
 #' @export
 rejection_samplr <- function(n, pdf, a , b, C) {
   if(is.numeric(n)==FALSE) stop("'n' must be a number")
@@ -28,8 +35,8 @@ rejection_samplr <- function(n, pdf, a , b, C) {
     sim_data <- replicate(10000, {
       v <- runif(1,a,b)
       u <- runif(1,0,C)
-      if(v < pdf(u)) {#then accept else reject
-        u
+      if(u < pdf(v)) {#then accept else reject
+        v
         } else {
           NA
         }
@@ -52,15 +59,18 @@ rejection_samplr <- function(n, pdf, a , b, C) {
 
 loop_again <- function(pdf,a,b,C, percent){
   sim_data <- replicate(1000/percent, {
-    u <- runif(1, a, b)
-    v <- runif(1, 0, C)
-    if(v < pdf(u)) {#then accept else reject
-      u
+    v <- runif(1, a, b)
+    u <- runif(1, 0, C)
+    if(u < pdf(v)) {#then accept else reject
+      v
     } else {
       NA
     }
   })
   sim_data
 }
+
+
+
 
 
