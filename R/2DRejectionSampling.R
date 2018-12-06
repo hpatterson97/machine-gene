@@ -14,8 +14,36 @@ samplr2D <- function(n, jpdf, a , b, C) {
                             y = v[2])
      } else {
        NA
+     }
+  })
+    sim_data <- sim_data[!is.na(sim_data)]
+    for (i in 1:100){
+      if (length(sim_data) >= n) {
+        sim_data <- sim_data[1:n]
+        break
+      }
+      else if (length(sim_data < n)) {
+        percent <- length(sim_data)/10000
+        sim_data2 <- loop_again(pdf,a,b, C, percent) #loops over the sim_dat function 1/percent times
+        sim_data <- c(sim_data,sim_data2[!is.na(sim_data2)])
+        #sim_data <- sim_data[!is.na(sim_data)]
+      }
     }
-})
+    sim_data
 }
 
-samplr2d()
+loop_again <- function(pdf,a,b,C, percent){
+  sim_data2D <- replicate(1000/percent,{
+    v <- runif(2,a,b)
+    u <- runif(1,0,C)
+    if(u < jpdf(v)){
+      sample <- data.frame( x = v[1],
+                            y = v[2])
+      } else {
+        NA
+        }
+    })
+  sim_data2D
+  }
+
+

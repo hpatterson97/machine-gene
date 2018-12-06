@@ -53,7 +53,7 @@ rejection_samplr <- function(n, pdf, a , b, C) {
         sim_data <- c(sim_data,sim_data2[!is.na(sim_data2)])
         #sim_data <- sim_data[!is.na(sim_data)]
         }
-      }#throw in warning message in case doesn't give right number: r command warning
+      }
     sim_data
 }
 
