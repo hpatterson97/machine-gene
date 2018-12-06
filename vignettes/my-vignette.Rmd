@@ -17,16 +17,8 @@ knitr::opts_chunk$set(
 ```
 
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
-
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
-
 ## Background
 The cdsamplr package provides functions that allow for sampling from continuous random variable distributions.
-
-
 
 ## Rejection Sampling
 The idea behind rejection sampling is to:
@@ -35,11 +27,11 @@ b. keep values that fall under the region of the probability density funciton
 c. reject values that fall outside of the region of the probability density function
 
 How it is done:
-1. start with a proposed sample that from a uniform distribution between a and b
-2. select a critical value by using the uniform distribution between 0 and C (where    C is the maximum of the density function)
+1. start with a proposed sample from a uniform distribution between a and b
+2. select a critical value by using a uniform distribution between 0 and C (where    C is the maximum of the density function)
 3. compute the pdf of the critical value
 4. compare the proposed sample to the pdf of the critical value
-5. if the proposed is less than the critical value, store the proposed in a vector.
+5. if the proposed is less than the critical value, store the proposed in a vector
 
 ## Example - Rejection Sampling Uniform 
 
@@ -49,8 +41,6 @@ Here is an example of Rejection_Samplr using the uniform distribution.
  sim_data <- rejection_samplr(1300, dunif, 0,1,2)
  hist(sim_data, probability = TRUE)
 ```
-
-
 
 ## Example - Rejection Sampling Custom PDF
 
