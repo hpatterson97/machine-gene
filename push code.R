@@ -1,6 +1,6 @@
 #command to push new code
 git add  .
-git commit -m "created vignette and added examples"
+git commit -m "wrtoe beginnings for function for 2D rejection sampling"
 git push origin workingbranch
 
 #git branch checks the branch your in
