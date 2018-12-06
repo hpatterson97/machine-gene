@@ -1,6 +1,6 @@
 #command to push new code
 git add  .
-git commit -m "edited description and added some examples"
+git commit -m "created vignette and added examples"
 git push origin workingbranch
 
 #git branch checks the branch your in

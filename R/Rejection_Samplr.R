@@ -19,6 +19,13 @@
 #'  curve(dunif(x,0,1), col = "red", add = TRUE)
 #' @export
 rejection_samplr <- function(n, pdf, a , b, C) {
+  if(is.numeric(n)==FALSE) stop("'n' must be a number")
+  if(is.numeric(a)==FALSE) stop("'a' must be a number")
+  if(is.numeric(b)==FALSE) stop("'b' must be a number")
+  if(is.numeric(C)==FALSE) stop("'C' must be a number")
+  if (n < 0) stop("'n' must be non-negative")
+  if (a > b) stop("a must be less than b")
+  if (C < 0) stop("'C' must be non-negative")
     sim_data <- replicate(10000, {
       v <- runif(1,a,b)
       u <- runif(1,0,C)

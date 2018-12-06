@@ -3,8 +3,8 @@ Type: Package
 Title: CD Sample
 Version: 0.1.0
 Author: Hannah Patterson
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: This package will sample from a CDF. 
+Maintainer: The package maintainer <hpatterson916@gmail.com>
+Description: This package was created for MATH 4800 at Saint Louis Univeristy. It samples from contiuous random variables.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
