@@ -83,7 +83,8 @@ How it is done:
 
 ## Example - 2D Rejection Sampling on a Square
 Here is an example of samplr2D using the joint pdf of
-two independent uniform random variables each with min = 0 and max = 1.
+two independent uniform random variables each with min = 0 and max = 1
+
 ```{r}
 unif_pdf <- function(x,y, min = 0, max = 1){
   x <- dunif(x, min = min, max = max)

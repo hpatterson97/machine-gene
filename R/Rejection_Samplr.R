@@ -30,6 +30,7 @@ rejection_samplr <- function(n, pdf, a , b, C) {
   if(is.numeric(a)==FALSE) stop("'a' must be a number")
   if(is.numeric(b)==FALSE) stop("'b' must be a number")
   if(is.numeric(C)==FALSE) stop("'C' must be a number")
+  if(is.function(pdf)==FALSE) stop("'pdf' must be a function")
   if (n < 0) stop("'n' must be non-negative")
   if (a > b) stop("a must be less than b")
   if (C < 0) stop("'C' must be non-negative")
@@ -45,14 +46,13 @@ rejection_samplr <- function(n, pdf, a , b, C) {
     sim_data <- sim_data[!is.na(sim_data)]
     for (i in 1:100){
       if (length(sim_data) >= n) {
-        sim_data <- sim_data[1:n]
+        sim_data <- sim_data[1:n]   #creates vector that is length n
         break
         }
       else if (length(sim_data < n)) {
         percent <- length(sim_data)/10000
-        sim_data2 <- loop_again(pdf,a,b, C, percent) #loops over the sim_dat function 1/percent times
+        sim_data2 <- loop_again(pdf,a,b, C, percent) #loops over the sim_dat function again to generate more samples
         sim_data <- c(sim_data,sim_data2[!is.na(sim_data2)])
-        #sim_data <- sim_data[!is.na(sim_data)]
         }
       }
     sim_data
