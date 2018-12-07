@@ -1,6 +1,6 @@
 #command to push new code
 git add  .
-git commit -m "added example for 2D rejection sampling, and oxygenised"
+git commit -m "quick edits to clean up sampling code and take out unnecessary comments"
 git push origin workingbranch
 
 #git branch checks the branch your in
