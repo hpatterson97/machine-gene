@@ -69,3 +69,16 @@ hist(sim_data, probability = TRUE)
 curve(dbeta(x,2,3), col = "red", add = TRUE)
 ```
 
+## Example - 2D Rejection Sampling on a Square
+Here is an example of 2DRejectionSampling using the joint pdf of
+two independent uniform random variables each with min = 0 and max = 1.
+```{r}
+unif_pdf <- function(x,y, min = 0, max = 1){
+  x <- dunif(x, min = min, max = max)
+  y <- dunif(y, min = min, max = max)
+  x*y
+  }
+test <- samplr2D(n = 2000, jpdf = unif_pdf, a = 0, b = 1, C = 1)
+```
+
+
