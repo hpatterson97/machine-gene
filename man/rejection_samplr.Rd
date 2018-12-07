@@ -2,7 +2,7 @@
 % Please edit documentation in R/Rejection_Samplr.R
 \name{rejection_samplr}
 \alias{rejection_samplr}
-\title{Add together two numbers}
+\title{Rejection Sampler}
 \usage{
 rejection_samplr(n, pdf, a, b, C)
 }
@@ -24,5 +24,21 @@ a random sample of size n from the rv with pdf provided
 This is code that performs rejection sampling on a continuous random variable
 }
 \examples{
-n/a
+## sampling from custom pdf
+ my_pdf <- function(x) {
+   ifelse(x>=0 & x<=2, (x/2), 0)}
+ sim_data <- rejection_samplr(30000, my_pdf, 0,2,1)
+ hist(sim_data, probability = TRUE)
+ curve(my_pdf(x), col = "red", add = TRUE)
+## sampling from dunif
+ sim_data <- rejection_samplr(1300, dunif, 0,1,2)
+ hist(sim_data, probability = TRUE)
+ curve(dunif(x,0,1), col = "red", add = TRUE)
+## sampling from beta
+ sim_data <- rejection_samplr(1300, pdf_beta, a = 0,b = 1,C =1.5)
+ pdf_beta <- function(x) {
+   dbeta(x, 2, 3)
+ }
+ hist(sim_data, probability = TRUE)
+ curve(dbeta(x,2,3), col = "red", add = TRUE)
 }
