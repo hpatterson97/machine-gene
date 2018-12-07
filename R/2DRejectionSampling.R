@@ -68,5 +68,3 @@ loop_again <- function(n,jpdf,a,b,C){
 
 
 
-
-

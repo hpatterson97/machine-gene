@@ -26,10 +26,13 @@
 #'  curve(dbeta(x,2,3), col = "red", add = TRUE)
 #' @export
 rejection_samplr <- function(n, pdf, a , b, C) {
-  if(is.numeric(n)==FALSE) stop("'n' must be a number")
+  if(is.numeric(n)==FALSE) stop("'n' must be an integer")
   if(is.numeric(a)==FALSE) stop("'a' must be a number")
   if(is.numeric(b)==FALSE) stop("'b' must be a number")
   if(is.numeric(C)==FALSE) stop("'C' must be a number")
+  if(is.double(n)==TRUE){
+    n <- round(n)
+  }
   if(is.function(pdf)==FALSE) stop("'pdf' must be a function")
   if (n < 0) stop("'n' must be non-negative")
   if (a > b) stop("a must be less than b")
@@ -71,7 +74,9 @@ loop_again <- function(pdf,a,b,C, percent){
   sim_data
 }
 
-
+sim_data <- rejection_samplr(10.5, dunif, 0,1,2)
+#'  hist(sim_data, probability = TRUE)
+#'  curve(dunif(x,0,1), col = "red", add = TRUE)
 
 
 
