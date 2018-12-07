@@ -1,3 +1,4 @@
+#' @title Rejection Sampler
 #' @description This is code that performs rejection sampling on a continuous random variable
 #' @param n the number of samples
 #' @param pdf a function that is the pdf of the random variable that you wish to sample from

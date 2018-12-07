@@ -17,8 +17,9 @@ knitr::opts_chunk$set(
 ```
 
 
+
 ## Background
-The cdsamplr package provides functions that allow for sampling from continuous random variable distributions.
+This package provides functions that allow for sampling from continuous random variable distributions.
 
 ## Rejection Sampling
 The idea behind rejection sampling is to:
@@ -75,13 +76,13 @@ The samples come in the form of pairs (x and y)
 
 How it is done:
 1. start by taking two proposed samples - each from a uniform distribution between a and b
-2. select a critical value by using a uniform distribution between 0 and C (where C is the maximum of the density function)
+2. select a critical value by using a uniform distribution between 0 and C (where C is the maximum of the joint density function)
 3. compute the joint pdf of the two proposed samples
 4. compare the critical value to the joint pdf of the proposed samples
-5. if the critical value is less than the joint pdf of the proposed, store the proposed samples in a variable 
+5. if the critical value is less than the joint pdf of the proposed, store the proposed samples in a data frame 
 
 ## Example - 2D Rejection Sampling on a Square
-Here is an example of 2DRejectionSampling using the joint pdf of
+Here is an example of samplr2D using the joint pdf of
 two independent uniform random variables each with min = 0 and max = 1.
 ```{r}
 unif_pdf <- function(x,y, min = 0, max = 1){
@@ -91,5 +92,19 @@ unif_pdf <- function(x,y, min = 0, max = 1){
   }
 test <- samplr2D(n = 2000, jpdf = unif_pdf, a = 0, b = 1, C = 1)
 ```
+
+## Example - 2D Rejection Sampling on a Square
+Here is an example of samplr2D using the joint pdf of two independent normal random variables 
+each with mean = 0 and standard deviation = 1
+```{r}
+norm_jpdf <- function(x,y, mean = 0, sd = 1){
+ x <- dnorm(x, mean = mean, sd = sd)
+ y <- dnorm(y,mean = mean, sd = sd)
+ x*y
+}
+
+test <- samplr2D(n = 2000, jpdf = norm_jpdf, a = 0, b = 1, C = 1)
+```
+
 
 
