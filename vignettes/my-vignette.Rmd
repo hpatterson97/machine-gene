@@ -28,10 +28,10 @@ c. reject values that fall outside of the region of the probability density func
 
 How it is done:
 1. start with a proposed sample from a uniform distribution between a and b
-2. select a critical value by using a uniform distribution between 0 and C (where    C is the maximum of the density function)
-3. compute the pdf of the critical value
-4. compare the proposed sample to the pdf of the critical value
-5. if the proposed is less than the critical value, store the proposed in a vector
+2. select a critical value by using a uniform distribution between 0 and C (where C is the maximum of the density function)
+3. compute the pdf of the proposed sample 
+4. compare the critical value to the pdf of the proposed
+5. if the critical value is less than the pdf of the proposed, store the proposed sample in a variable 
 
 ## Example - Rejection Sampling Uniform 
 
@@ -40,12 +40,12 @@ Here is an example of Rejection_Samplr using the uniform distribution.
 ```{r}
  sim_data <- rejection_samplr(1300, dunif, 0,1,2)
  hist(sim_data, probability = TRUE)
+ curve(dunif(x), col = "red", add = TRUE)
 ```
 
 ## Example - Rejection Sampling Custom PDF
 
 Here is an example of Rejection_Samplr using a custom probability density function. 
-
 
 ```{r}
 my_pdf <- function(x) {
@@ -58,7 +58,7 @@ my_pdf <- function(x) {
 
 ## Example - Rejection Sampling Beta PDF
 
-Here is an example of Rejection_Samplr using a beta probability density function. It has a set pdf where shape1 = 2 and shape2 = 3.
+Here is an example of Rejection_Samplr using a beta probability density function. It has a set pdf where shape1= 2 and shape2= 3.
 
 ```{r}
 sim_data <- rejection_samplr(1300, pdf_beta, a = 0,b = 1,C =1.5)
@@ -68,6 +68,17 @@ pdf_beta <- function(x) {
 hist(sim_data, probability = TRUE)
 curve(dbeta(x,2,3), col = "red", add = TRUE)
 ```
+
+## 2DRejection Sampling on a Square
+The idea behind this sampling techinique is to generate samples from a continuous 2D distribution defined on a square.
+The samples come in the form of pairs (x and y)
+
+How it is done:
+1. start by taking two proposed samples - each from a uniform distribution between a and b
+2. select a critical value by using a uniform distribution between 0 and C (where C is the maximum of the density function)
+3. compute the joint pdf of the two proposed samples
+4. compare the critical value to the joint pdf of the proposed samples
+5. if the critical value is less than the joint pdf of the proposed, store the proposed samples in a variable 
 
 ## Example - 2D Rejection Sampling on a Square
 Here is an example of 2DRejectionSampling using the joint pdf of
