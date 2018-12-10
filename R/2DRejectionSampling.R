@@ -12,15 +12,9 @@
 #'  y <- dunif(y, min = min, max = max)
 #'  x*y
 #'  }
-#'  test <- samplr2D(n = 2000, jpdf = unifj_pdf, a = 0, b = 1, C = 1)
-#'  ## sampling from two norm(0,1) rv's
-#'  norm_jpdf <- function(x,y, mean = 0, sd = 1){
-#'  x <- dnorm(x, mean = mean, sd = sd)
-#'  y <- dnorm(y,mean = mean, sd = sd)
-#'  x*y
-#'  }
-#'  test <- samplr2D(n = 2000, jpdf = norm_jpdf, a = 0, b = 1, C = 1)
+#'  test <- samplr2D(n = 2000, jpdf = unif_jpdf, a = 0, b = 1, C = 1)
 #' @return a data frame with x and y as the column names and the rows filled with the accepted values
+#' @export
 samplr2D <- function(n, jpdf, a , b, C) {
   if(is.numeric(n)==FALSE) stop("'n' must be a number")
   if(is.numeric(a)==FALSE) stop("'a' must be a number")

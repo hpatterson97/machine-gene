@@ -30,12 +30,5 @@ This is code that performs rejection sampling on a continuous random variable
  y <- dunif(y, min = min, max = max)
  x*y
  }
- test <- samplr2D(n = 2000, jpdf = unifj_pdf, a = 0, b = 1, C = 1)
- ## sampling from two norm(0,1) rv's
- norm_jpdf <- function(x,y, mean = 0, sd = 1){
- x <- dnorm(x, mean = mean, sd = sd)
- y <- dnorm(y,mean = mean, sd = sd)
- x*y
- }
- test <- samplr2D(n = 2000, jpdf = norm_jpdf, a = 0, b = 1, C = 1)
+ test <- samplr2D(n = 2000, jpdf = unif_jpdf, a = 0, b = 1, C = 1)
 }
