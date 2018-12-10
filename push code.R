@@ -1,6 +1,6 @@
 #command to push new code
 git add  .
-git commit -m "oxygenised the code"
+git commit -m "added error check to make n an integer"
 git push origin workingbranch
 
 #git branch checks the branch your in
@@ -18,4 +18,6 @@ git rebase master
 #terminal commands
 ls list files
 cd
+
+
 

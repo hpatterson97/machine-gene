@@ -74,9 +74,5 @@ loop_again <- function(pdf,a,b,C, percent){
   sim_data
 }
 
-sim_data <- rejection_samplr(10.5, dunif, 0,1,2)
-#'  hist(sim_data, probability = TRUE)
-#'  curve(dunif(x,0,1), col = "red", add = TRUE)
-
 
 
